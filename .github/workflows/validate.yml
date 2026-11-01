@@ -1,0 +1,23 @@
+name: Validate plugins
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate manifests
+        run: python3 .github/workflows/scripts/validate-plugins.py
+      - name: Run existing translation checks
+        run: python3 udiskie/tests/check_translations.py
+      - name: Verify generated catalog
+        run: |
+          python3 scripts/update-catalog.py
+          git diff --exit-code -- catalog.toml
+          git diff --check

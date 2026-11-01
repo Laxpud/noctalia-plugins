@@ -1,0 +1,16 @@
+schema_version = 1
+
+[plugins.udiskie]
+repository = "https://github.com/noctalia-dev/community-plugins.git"
+branch = "main"
+path = "udiskie"
+id = "aristides/udiskie"
+revision = "2b2fb660e59208154bdec06970ea7dbc2df8aa1a"
+version = "0.1.1"
+issue = "https://github.com/noctalia-dev/community-plugins/issues/1247"
+pull_request = "https://github.com/noctalia-dev/community-plugins/pull/1248"
+
+[tools]
+repository = "https://github.com/noctalia-dev/community-plugins"
+revision = "2b2fb660e59208154bdec06970ea7dbc2df8aa1a"
+paths = [".github/workflows/scripts/validate-plugins.py", ".github/workflows/scripts/update-catalog.py"]
